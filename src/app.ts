@@ -1,14 +1,18 @@
-import express, { Application, Request, Response } from 'express';
-import cors from 'cors';
-import globalErrorHandler from './app/middlewares/globalErrorHandler';
-const app: Application = express();
-import routes from './app/routes';
-import handleNotFoundRoutes from './app/middlewares/handleNotFoundRoutes';
 import cookieParser from 'cookie-parser';
-
+import cors from 'cors';
+import express, { Application, Request, Response } from 'express';
+import globalErrorHandler from './app/middlewares/globalErrorHandler';
+import handleNotFoundRoutes from './app/middlewares/handleNotFoundRoutes';
+import routes from './app/routes';
+const app: Application = express();
 
 // using cors
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+    credentials: true, // Enable sending cookies and other credentials
+  })
+);
 
 //parser
 app.use(express.json());
