@@ -9,8 +9,8 @@ const app: Application = express();
 // using cors
 app.use(
   cors({
-    origin: '*',
-    credentials: true, // Enable sending cookies and other credentials
+    origin: true,
+    credentials: true,
   })
 );
 
