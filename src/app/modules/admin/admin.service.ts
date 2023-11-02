@@ -16,9 +16,9 @@ const createAdminToDB = async (data: IAdmin): Promise<IAdmin | null> => {
   };
 
   const loginAdmin = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
-    const { phoneNumber, password } = payload;
+    const { email, password } = payload;
   
-    const isUserExist = await Admin.isAdminExist(phoneNumber);
+    const isUserExist = await Admin.isAdminExist(email);
   
     if (!isUserExist) {
       throw new ApiError(httpStatus.NOT_FOUND, 'Admin does not exist');
